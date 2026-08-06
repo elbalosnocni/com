@@ -90,9 +90,13 @@ let data = [];
 
 const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT6pmKN7FtnBUgeQ74wEk3KGL8S4zIK-S3ned-f9GBIGdHKvbUxmRcXSIASmv5T3NO-yvNX1oVTX8qe/pub?gid=0&single=true&output=csv";
 
-// bỏ dấu tiếng Việt
+// bỏ dấu tiếng Việt (MỚI - ĐÃ TRỊ LỖI Đ/đ)
 function removeVietnamese(str) {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    if (!str) return "";
+    return str
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[đĐ]/g, "d");
 }
 
 // load data
